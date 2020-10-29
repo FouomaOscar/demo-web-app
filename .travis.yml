@@ -7,14 +7,18 @@
 # script:
 #     - docker run oscarfouoma/demo-web-app npm run test -- --coverage
 language: node_js
- node_js:
- - "stable"
- cache:
- directories:
-   - node_modules
- script:
- - npm test
- - npm run build
-branches:
-  only:
-    - main
+node_js:
+  - "stable"
+cache:
+  directories:
+    - node_modules
+script:
+  - npm run build || true
+  - npm test
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: build
+  on:
+    branch: master
