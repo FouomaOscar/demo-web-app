@@ -10,7 +10,7 @@ services:
 before_install:
     - docker build -t oscarfouoma/demo-web-app .
 script:
-  - docker run -p 80:80 oscarfouoma/demo-web-app
+  - docker run -d -p 80:80 oscarfouoma/demo-web-app
 
 # deploy:
 #   provider: elasticbeanstalk
